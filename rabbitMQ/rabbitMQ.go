@@ -217,8 +217,8 @@ func CreateConsumerHandler[T any](taskData *types.RegisterHandler[T]) (err error
 	return
 }
 
-// 开启
-func sendQueue(taskName string, data any, deliveryMode bool) (err error) {
+// SendQueue 发送队列任务
+func SendQueue(taskName string, data any, deliveryMode bool) (err error) {
 	// 开启获取 MQ 连接
 	conn, err := GetConn()
 	// 处理开启连接失败
