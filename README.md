@@ -10,6 +10,12 @@ import (
 )
 
 func main() {
+  // 发送队列
+  // param1 队列名称
+  // param2 参数
+  // param3 是否持久化数据 (会降低QPS)
+  rabbitMQ.SendQueue("TestQueue", g.Map{"a":1}, false)
+  // 监听处理
 	rabbitMQ.QueueService(map[string]error{
 		"测试队列": rabbitMQ.CreateConsumerHandler(&types.RegisterHandler[types.TestQueueData]{
 			Handler:    handlers.TestQueue, // 执行的函数
