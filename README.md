@@ -1,6 +1,6 @@
 # GF 的 rabbit MQ 接入
 ### GITHUB [gf-x-rabbitMQ](https://github.com/xgd16/gf-x-rabbitMQ)
-
+<font size="2" color=#006666>西安豆芽科技有限公司 **制**</font>
 ```go
 package main
 
