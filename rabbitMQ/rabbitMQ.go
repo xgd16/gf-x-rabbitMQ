@@ -188,6 +188,21 @@ func ConsumerCoroutineSameTypeDataLock(msg <-chan amqp.Delivery, taskName string
 	}
 }
 
+// GetConsumer 获得一个直接可使用的消费者
+func GetConsumer(taskName string, deliveryMode bool) (msg <-chan amqp.Delivery, err error) {
+	// 获取连接
+	conn, err := GetConn()
+	if err != nil {
+		return
+	}
+	// 创建一个消费者
+	msg, err = CreateConsumer(taskName, conn, deliveryMode)
+	if err != nil {
+		return
+	}
+	return
+}
+
 // CreateConsumerHandler 创建一个执行消费者
 func CreateConsumerHandler[T any](taskData *types.RegisterHandler[T]) (err error) {
 	// 获取连接
